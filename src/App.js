@@ -21,20 +21,13 @@ function App() {
 		>
 			<Router>
 				<header>
-					<h1>Écotrain - empreinte carbone</h1>
-					<img
-						src={'/' + ecotrain}
-						css="width: 20rem"
-						title="L'écotrain sur un pont dans la nature"
-					/>
+					<h1>Trottinette partagée - empreinte carbone</h1>
+					<img src={'/' + ecotrain} css="width: 20rem" />
 				</header>
 				<div>
 					<p>
-						L'empreinte totale de l'
-						<a href="https://wiki.lafabriquedesmobilites.fr/wiki/ECOTRAIN">
-							écotrain
-						</a>{' '}
-						est estimée à <strong>{résultat}</strong>
+						L'empreinte totale d'une trottinette partagée est estimée à
+						<strong>{résultat}</strong>
 					</p>
 					<p>
 						Cet excellente estimation tranche avec tous les autres modes de
