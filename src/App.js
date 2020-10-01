@@ -2,7 +2,7 @@ import React from 'react'
 import illustration from './trottinette.svg'
 import './App.css'
 // On définit une liste de règles publicodes
-import { résultat, engine } from './Calcul.js'
+import { result, engine } from './Calcul.js'
 import { Documentation } from 'publicodes'
 import {
 	BrowserRouter as Router,
@@ -49,8 +49,9 @@ function App() {
 							leur inefficacité.
 						</p>
 						<p>
-							L'empreinte totale d'une trottinette partagée est estimée à{' '}
-							<strong>{résultat}</strong>.
+							L'empreinte totale d'une trottinette partagée pour un trajet d'
+							<strong>1km </strong> est estimée à{' '}
+							<strong>{Math.round(result.nodeValue * 1000)} gCO2e</strong>.
 						</p>
 						<p>
 							Nous publions ci-dessous le calcul dans son intégralité pour que
