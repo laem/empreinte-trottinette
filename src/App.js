@@ -29,7 +29,7 @@ function App() {
 				<div
 					css={`
 						img {
-							max-height: 10rem;
+							max-height: 14rem;
 						}
 						display: flex;
 						justify-content: center;
@@ -38,24 +38,30 @@ function App() {
 					<img src={'/' + illustration} css="width: 20rem" />
 					<div>
 						<p>
-							L'empreinte totale d'une trottinette partagée est estimée à
-							<strong>{résultat}</strong>
+							Les trottinettes électriques partagées ont débarqué dans les
+							grandes villes en 2019 et se sont imposées comme une alternative à
+							la marche, au vélo, aux transports en commun et à la voiture.
 						</p>
 						<p>
-							Cet excellente estimation tranche avec tous les autres modes de
-							transport qui sont largement plus polluants, excepté le TGV qui
-							obtient un résultat similaire.{' '}
+							Pourtant, malgré la taille réduite de ce véhicule, il n'est pas du
+							tout évident qu'il soit écologique, du moins quand il remplace
+							autre chose qu'un trajet en voiture ou en taxi, indétronables dans
+							leur inefficacité.
 						</p>
 						<p>
-							Nous publions donc ci-dessous le calcul dans son intégralité pour
-							que chacun puisse le comprendre et le remettre en question.
+							L'empreinte totale d'une trottinette partagée est estimée à{' '}
+							<strong>{résultat}</strong>.
+						</p>
+						<p>
+							Nous publions ci-dessous le calcul dans son intégralité pour que
+							chacun puisse le comprendre et le remettre en question.
 						</p>
 					</div>
 				</div>
 				<h2>Explication du calcul</h2>
 				<Switch>
 					<Route path="/">
-						<Redirect to="/empreinte/par-km-voyageur" />
+						<Redirect to="/transport/trottinette-électrique-partagée" />
 					</Route>
 				</Switch>
 				<Documentation engine={engine} documentationPath={''} />

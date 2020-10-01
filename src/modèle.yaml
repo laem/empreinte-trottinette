@@ -1,79 +1,108 @@
-poids à vide:
-  formule: poids batteries + poids chassis et caisse
+transport . trottinette électrique partagée:
+  titre: Trottinette partagée
+  description: >
+    Les trottinettes électriques partagées ont envahi les grandes villes
+    européennes en 2019, et enflammé les débats à Paris. En règle générale, la
+    mise en commun d'un matériel permet de maximiser son utilisation, et donc
+    d'amortir le coût élevé de sa fabrication.
 
-poids batteries: 2.9 tonnes
 
-poids chassis et caisse: 7.78 tonnes
+    Pour le moment, c'est pourtant l'inverse qui se passe, ces trotinettes ayant un impact proche de celui d'un automobiliste tout seul dans sa voiture thermique ! 
 
-capacité batterie: 219 kWh
 
-distance parcourue: 3000000 km
+    Une trotinette individuelle sera en effet beaucoup plus économe, car elle durera plusieurs années.
 
-consommation: 
-  formule: 0.6 kWh/km
-  description: |
-    Pour la ligne de référence (60 km, pentes classiques, 6 arrêts en moyenne)
 
-    La motorisation de référence est de 90 KW.
+    On peut aussi noter que la trotinette [ne remplace pas dans 90% des cas](http://transports.blog.lemonde.fr/2019/06/06/enquete-inedite-utilisateurs-trottinettes-electriques) l'usage de la voiture, mais plutôt la marche et les transports en commun.
+  note: Implémenter la trotinette individuelle.
+  icônes: 🛴⚡
+  formule: distance * impact
+transport . trottinette électrique partagée . impact:
+  titre: impact unitaire
+  description: >
+    On constate qu'avec le peu d'information dont on dispose, le bilan des
+    trottinettes électriques en partage est loin d'être vert. À ses débuts aussi
+    mauvais qu'une voiture, il semble que [la durée de vie](impact/usage
+    total/durée de vie) allongée des nouvelles générations de trotinettes sauve
+    quelque peu la mise. 
 
-empreinte . matériaux et assemblage:
-  formule: 31.7
-  unité: kgCO2e
-  description: |
-    La Navette est conçue principalement en acier (caisse) et en matériaux bio-sourcés (fibre de lin) pour la cabine.
-empreinte . batterie: 
-  formule: 138.6
-  unité: kgCO2e
-  description: |
-    Les batteries ont une durée d’utilisation de 10 ans puis sont réutilisées au sol sur place en « 2eme vie ». 
 
-    La navette utilise 10 jeux de batteries réutilisées en seconde vie puis recyclées 
+    Peut beaucoup mieux faire, donc ! Augmenter la durée de vie, réparer le matériel, augmenter l'usage journalier, ou encore s'assurer que la trottinette ne remplace pas que la marche et le vélo, par exemple via une régulation publique...
+  note: >
 
-empreinte . construction: 
-  formule: matériaux et assemblage + batterie
+    Il faudrait aussi prendre en compte l'impact :
+      - de la consommation d'électricité de la trottinette elle-même
+      - de la flotte de recharge et de déplacement en fonction de la demande, souvent faite par une vieille camionette
+      - du transport de la trottinette en France
+      - de l'infrastructure numérique derrière (serveurs, usage du smarpthone)
 
-contenu carbone électricité . réseau: 
-  formule: 0.2
-  unité: t
+    Le site Chester Energy and Policy ci-dessous est une analyse plus détaillée. la fabrication reste de loin le poste le plus important.
+  formule: fabrication / usage total
+  références:
+    - https://www.linkedin.com/feed/update/activity:6537001253883518976/
+    - https://chesterenergyandpolicy.com/2019/01/28/its-a-bird-its-a-lime-its-dockless-scooters-but-can-these-electric-powered-mobility-options-be-considered-sustainable-using-life-cycle-analysis/
+    - https://www.reddit.com/r/france/comments/e6ib10/comment/f9qio5x
+transport . trottinette électrique partagée . impact . fabrication:
+  formule: batterie + trottinette sans batterie
+transport . trottinette électrique partagée . impact . fabrication . batterie:
+  unité: kgCO₂e
+  formule: capacité * impact par kWh
+? transport . trottinette électrique partagée . impact . fabrication . batterie . capacité
+: unité: kWh
+  formule: 0.36
   note: |
-    Pourquoi tonne ? Pourquoi ce montant ?
-
-contenu carbone électricité . photovoltaïque: 
-  description: | 
-    Photovoltaïque "longue vie"
-
-    La production à partir de panneaux Photovoltaïques verre/verre est prévue sur 40 ans (garantie su 25 ans)  avec une décroissance annuelle de 0,4% et un taux de remplacement de 10%. Cette production est utilisée annuellement à 34% pour la navette et 66% pour les maisons à proximité des hangars de production PV.  10% de l’énergie est sourcée sur le réseau électrique sur le profil de production moyen Français. 
-  formule: 0.2
-  unité: t
-  note: Pourquoi tonne ? Pourquoi ce montant ? Que veut dire "longue vie"
-
-empreinte . exploitation: 
-  titre: Exploitation sur la durée de vie
-  formule: 1.8
-  unité: tonnes
-
-empreinte . durée de vie: 
-  formule: 172 tonnes
-  description: |
-    La machine a une durée de vie de 40 ans mais elle subit un « grand carénage » au bout de 20 ans.
-
-    En fin de vie, la navette et les panneaux PV sont totalement recyclés, ayant été conçus pour être aisément démontables et recyclables. 
-
-empreinte: 
-  formule: construction + exploitation
-
-empreinte . par km:
-  titre: Empreinte par kilomètre
-  formule: (empreinte * 1000) / distance parcourue
-  unité: kgCO2e/km
+    36V * 10Ah
+    Il y a une incertitude sur la taille de la batterie.
+  références:
+    commentaire Linkedin: https://www.linkedin.com/feed/update/urn:li:activity:6537001253883518976?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A6537001253883518976%2C6538002988328337408%29
+? transport . trottinette électrique partagée . impact . fabrication . batterie . impact par kWh
+: unité: kgCO₂e/kWh
+  formule: 200
+  note:
+    En l'absence de donnée précise fournie par les marques, nous prenons le pire
+    des cas, sur la fourchette de 150-200kg donnée par l'étude ci-dessous.
+  références:
+    - https://www.automobile-propre.com/voiture-electrique-impact-carbone-batteries/
+? transport . trottinette électrique partagée . impact . fabrication . trottinette sans batterie
+: note:
+    Pour une trottinette de l'ordre de 8kg sans la batterie. La Base Carbone de
+    l’ADEME a un facteur d’émissions pour les « machines », de l’ordre de 5,5 kg
+    CO2e/kg de machine.
+  unité: kgCO₂e
+  formule: 45
+transport . trottinette électrique partagée . impact . usage total:
+  formule: durée de vie * usage par jour
+? transport . trottinette électrique partagée . impact . usage total . durée de vie
+: unité: jour
+  description: >
+    La première investigation indépendante sur la durée de vie des trottinettes
+    la chiffrait à 29 jours. Depuis, le Los Angeles Times estime celle des
+    trotinettes Bird à 126 jours.
 
 
-navette:
-navette . places: 30 personnes
-navette . remplissage moyen: 60 %
-navette . passagers moyens: 
-  formule: places * remplissage moyen
-
-empreinte . par km voyageur:
-  formule: (1000 * par km) / navette . passagers moyens
-  unité: gCO2e/passager.km
+    Dans l'absence d'informations plus précises, notamment des autres marques, nous prenons la moyenne de ces deux estimations.
+  formule: (29 + 126) / 2
+  références:
+    - https://www.liberation.fr/planete/2019/03/07/une-trottinette-partagee-a-une-duree-de-vie-de-28-jours_1713419
+    - https://www.latimes.com/business/technology/la-fi-tn-bird-scooters-money-profit-strategy-20190505-story.html
+? transport . trottinette électrique partagée . impact . usage total . usage par jour
+: formule: locations par jour * distance par location
+? transport . trottinette électrique partagée . impact . usage total . locations par jour
+: unité: /jour
+  formule: 10
+? transport . trottinette électrique partagée . impact . usage total . distance par location
+: description:
+    D'après le rapport de l'entreprise Lime, la distance moyenne est de 1.06
+    miles. On ne sait pas cependant si c'est la distance pour leurs vélos
+    électriques ou leurs trottinettes.
+  unité: km
+  formule: 1.7
+  références:
+    - https://www.li.me/second-street/lime-one-year-report-scooter-bike-sharing
+transport . trottinette électrique partagée . distance:
+  question: Quelle est la distance du trajet ?
+  suggestions:
+    traverser le quartier: 2
+    traverser la ville: 10
+  par défaut: 2
+  unité: km
