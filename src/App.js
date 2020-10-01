@@ -16,6 +16,7 @@ function App() {
 		<div
 			css={`
 				margin: 0 auto;
+				padding: 0 1rem 1rem;
 				max-width: 800px;
 				h1 {
 					margin-bottom: 2rem;
@@ -28,14 +29,11 @@ function App() {
 				</header>
 				<div
 					css={`
-						img {
-							max-height: 14rem;
-						}
 						display: flex;
 						justify-content: center;
 					`}
 				>
-					<img src={'/' + illustration} css="width: 20rem" />
+					<img src={'/' + illustration} css="width: 30rem" />
 					<div>
 						<p>
 							Les trottinettes électriques partagées ont débarqué dans les
